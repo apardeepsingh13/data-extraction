@@ -2,7 +2,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from nested import *
 from graph import *
 from langchain_google_genai import ChatGoogleGenerativeAI
-from transcript import formatted
+from userTranscript import formatted
 import getpass
 import os
 from dotenv import load_dotenv
@@ -20,12 +20,12 @@ load_dotenv()
 # _set_env("GOOGLE_API_KEY")
 
 
-print(formatted)
+# print()
 def invokeExtraction():
     tools = [TranscriptSummary]
 
 
-    llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro")
+    llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", api_key=os.getenv("GOOGLE_API_KEY"))
 
     bound_llm = bind_validator_with_retries(
         llm,
@@ -57,4 +57,4 @@ def invokeExtraction():
         print(repr(e))
 
 
-# invokeExtraction()
+invokeExtraction()
