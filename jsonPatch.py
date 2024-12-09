@@ -4,6 +4,7 @@ from IPython.display import Image, display
 from pydantic import BaseModel, Field, field_validator
 from graph import *
 from graph import _bind_validator_with_retries
+from transcript import transcript
 
 
 logger = logging.getLogger("extraction")
